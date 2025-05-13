@@ -6,7 +6,6 @@ vector<int> reverse(vector<int> arr){
   // declare start and end pointers
   int start = 0;
   int end = arr.size() - 1; // Fix the end pointer
-
   // run a loop until start index becomes less than end index
   while(start < end){
     // swap start & end
@@ -14,7 +13,6 @@ vector<int> reverse(vector<int> arr){
     start++;
     end--;
   }
-
   return arr;
 }
 

@@ -9,7 +9,6 @@ int SecLargest(vector<int> arr) {
   // Initialize the largest and second largest elements as the smallest possible value
   int largest = INT_MIN;
   int secLargest = INT_MIN;
-
   // Loop through the array to find the largest element
   for (int i = 0; i < arr.size(); i++) {
       // Update largest if a larger element is found
@@ -17,7 +16,6 @@ int SecLargest(vector<int> arr) {
           largest = arr[i];
       }
   }
-
   // Loop through the array again to find the second largest element
   for (int i = 0; i < arr.size(); i++) {
       // Update second largest if a value larger than secLargest is found, but not equal to the largest
@@ -25,7 +23,6 @@ int SecLargest(vector<int> arr) {
           secLargest = arr[i];
       }
   }
-
   // Return the second largest element
   return secLargest;
 }
@@ -41,7 +38,6 @@ int secSmallest(vector<int> arr) {
           smallest = arr[i]; // Update smallest
       }
   }
-
   // Second loop to find the second smallest element
   for (int i = 0; i < arr.size(); i++) {
       // If the current element is smaller than secSmallest and not equal to smallest
@@ -49,7 +45,6 @@ int secSmallest(vector<int> arr) {
           secSmallest = arr[i]; // Update second smallest
       }
   }
-
   // Return the second smallest element
   return secSmallest;
 }

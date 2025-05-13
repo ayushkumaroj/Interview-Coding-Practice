@@ -20,6 +20,7 @@ using namespace std;
 🔸 Time Complexity: O(n^2)
 🔸 Space Complexity: O(1)
 */
+// Brute Force (Using Loop), T.C: O(n^2), S.C: O(1)
 int usingLoop(vector<int>&arr){
   for(int i=0; i<arr.size()-1; i++){
     int count = 0;
@@ -36,7 +37,6 @@ int usingLoop(vector<int>&arr){
       return -1;
     }
   }
-
 }
 
 // ------------------------------------------------------------------
@@ -48,7 +48,7 @@ int usingLoop(vector<int>&arr){
 🔸 Time Complexity: O(n^2)
 🔸 Space Complexity: O(1)
 */
-
+// Using HashMap, T.C: O(n^2), S.C: O(1)
 int usingMap(vector<int>arr){
   unordered_map<int,int>count;
   int ans;
@@ -63,7 +63,6 @@ int usingMap(vector<int>arr){
     }
   }
   return ans;
-
 }
 
 // ------------------------------------------------------------------
@@ -75,7 +74,7 @@ int usingMap(vector<int>arr){
 🔸 Time Complexity: O(n)
 🔸 Space Complexity: O(1)
 */
-
+// Using XOR, T.C: O(N), S.C: O(1)
 int UsingXor(vector<int>arr){
   int ans = 0;
   for(int i=0; i<arr.size(); i++){

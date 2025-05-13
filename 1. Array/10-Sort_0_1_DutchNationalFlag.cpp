@@ -6,7 +6,6 @@ using namespace std;
 void SortZeroOne1(vector<int>arr){
   int countZero = 0;
   int countOne = 0;
-
   //Count Number of Zero and One
   for(int i=0; i<arr.size(); i++){
     if(arr[i] == 0){
@@ -57,7 +56,6 @@ void SortZeroOne2(vector<int>&arr){
     }
     cout<<endl;
   }
-
   //Just print the array
   for(int i=0; i<arr.size(); i++){
     cout<<arr[i]<<" ";

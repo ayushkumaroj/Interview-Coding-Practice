@@ -20,7 +20,9 @@ using namespace std;
 🔸 Time Complexity: ...
 🔸 Space Complexity: ...
 */
+
 int UsingLoop(vector<int>arr, int size){
+  //Brute Force (T.C: O(n^2), S.C: O(n))
   for(int i=0; i<size; i++){
     int count = 1;
     for(int j=i+1; j<size; j++){
@@ -45,12 +47,14 @@ int UsingLoop(vector<int>arr, int size){
 🔸 Space Complexity: O(N)- in worst case when all eleme distinct
 */
 
+//USING HASHMAP(T.C: O(N), S.C: O(N))
 int UsingMap(vector<int>arr, int size){
   unordered_map<int,int>freq;
   //count freq of each element
   for(int i=0; i<size; i++){
     int element = arr[i];
-    freq[element] = freq[element]+1; //or -> freq[arr[i]]++;
+     //or -> freq[arr[i]]++;
+    freq[element] = freq[element]+1;
     if(freq[element] > size/2){
       return arr[i];
     }
@@ -69,9 +73,9 @@ int UsingMap(vector<int>arr, int size){
 🔸 Space Complexity:
 */
 int UsingBoyerMooreAlgo(vector<int> arr, int size) {
+  // USING Boyer-Moore Algorithm(A,n) , T.C: O(N), S.C: O(1)
   int maj = -1;
   int count = 0;
-
   for(int i=0; i<size; i++){
     if(count == 0){
       maj = arr[i];
@@ -84,7 +88,6 @@ int UsingBoyerMooreAlgo(vector<int> arr, int size) {
       count = count -1;
     }
   }
-
   //verification
   count = 0;
   for(int i=0; i<size; i++){
@@ -92,7 +95,6 @@ int UsingBoyerMooreAlgo(vector<int> arr, int size) {
       count = count+1;
     }
   }
-
   //check
   if(count > size/2){
     return maj;

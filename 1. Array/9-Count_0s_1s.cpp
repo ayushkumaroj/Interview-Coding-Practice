@@ -16,10 +16,7 @@ int main(){
       countOne++;
     }
   }
-
   cout<<"The Number of Zero are: "<<countZero<<endl;
   cout<<"The Number of One are: "<<countOne<<endl;
-
   return 0;
-
 }

@@ -7,47 +7,45 @@ using namespace std;
 //Approach 1: Digit Count Approach using Iterative Division
 // Time Complexity: O(N * D), where D is the average number of digits per number
 // Space Complexity: O(1)
+
+//Digit Count Approch (TC: O(N*D), SC: O(1))
 int UsingCount(vector<int>arr){
   int result = 0;
-
   for(int i=0; i<arr.size(); i++){
     int nums = arr[i];
     int count = 0;
-
     // count the number of digits by dividing by 10 iteratively
     while(nums){
       count++;
       nums = nums/10;
     }
-
     // if digit count is even, increment result
     if(count % 2 == 0){
       result++;
     }
   }
-
   return result;  // return final count
 }
 
 //Approach 2: Converting to string, then counting length
-// Time Complexity: O(N * D), where D is the number of digits (due to to_string)
+// Time Complexity: O(N * D), where D is the number of
+// digits (due to to_string)
 // Space Complexity: O(D), for string conversion
+
+// Using Converting to string (TC: O(N*Digit), SC: O(Digit))
 int ConverToString(vector<int>arr){
   int result = 0;
   for(int i=0; i<arr.size(); i++){
     // extract the array element
     int nums = arr[i];
-
     // convert number to string
     string s = to_string(nums);
-
     // check if string length is even
     if(s.length() % 2 == 0){
       // if even, increment result
       result++;
     }
   }
-
   // finally return the result
   return result;
 }
@@ -55,14 +53,14 @@ int ConverToString(vector<int>arr){
 //Approach 3: Using floor and log of number
 // Time Complexity: O(N)
 // Space Complexity: O(1)
+
+// Using floor and log of number (TC: O(N), SC: O(1))
 int UsingFloor(vector<int>arr){
   int result = 0;
   for(int i=0; i<arr.size(); i++){
     int num = arr[i];
-
     // count digits using log base 10
     int count = floor(log(num)) + 1;
-
     // if digit count is even, increment result
     if(count % 2 == 0){
       result++;
@@ -74,6 +72,8 @@ int UsingFloor(vector<int>arr){
 //Approach 4: Using question constraints (only check ranges with even digit counts)
 // Time Complexity: O(N)
 // Space Complexity: O(1)
+
+// Using question constraints (TC: O(N), SC: O(1))
 int UsingQuesConstraint(vector<int>arr){
   // In question it is given: array elements are in range 1 <= nums[i] <= 100000
   int result = 0;

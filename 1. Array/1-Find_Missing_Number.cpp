@@ -19,7 +19,7 @@ using namespace std;
 🔸 Time Complexity: O(n^2)
 🔸 Space Complexity: ...
 */
-
+// ✅ Approach 1: BRUTE FORCE - USING LOOP
 int  UsingLoop(vector<int>arr, int n){
   for(int i=1; i<n; i++){
     int flag = 0;
@@ -44,13 +44,13 @@ int  UsingLoop(vector<int>arr, int n){
 🔸 Time Complexity: O(n^2)
 🔸 Space Complexity: O(1)
 */
+// ✅ Approach 2: USING SUM OF N Number
 int UsingSumOfN(vector<int>arr, int n){
   int sumofN = n*(n+1)/2;
   int sum = 0;
   for(int i=0; i<n-1; i++){
     sum = sum+arr[i];
   }
-
   int result = sumofN-sum;
   return result;
 }
@@ -64,20 +64,18 @@ int UsingSumOfN(vector<int>arr, int n){
 🔸 Time Complexity: O(n^2)
 🔸 Space Complexity: O(1)
 */
-
+// ✅ Approach 2: USING XOR
 int UsingXoR(vector<int>arr, int n){
   // XOR all numbers from 1 to n-1 (x1)
   int x1 = 0;
   for (int i = 1; i <= n; i++) {
     x1 = x1 ^ i;
   }
- 
   // XOR all elements of the array (x2)
   int x2 = 0;
   for (int i = 0; i < n-1; i++) {
     x2 = x2 ^ arr[i];
   }
- 
   // XOR of x1 and x2 gives the missing number
   int result = x1 ^ x2;
   return result;
