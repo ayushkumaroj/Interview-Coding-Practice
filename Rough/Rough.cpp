@@ -1,29 +1,28 @@
 #include<iostream>
-using namespace std;
 #include<vector>
-
-int rotate_Once(vector<int>&arr){
-  //take out last element of array
-  int size = arr.size();
-  int temp = arr[size-1];
-  for(int i= size-2; i>=0; i--){
-    arr[i+1] = arr[i];
-  }
-  arr[0] = temp;
-}se
+using namespace std;
 
 int main(){
-  vector<int>arr{1,2,3,4,5,6,7};
-  int k = 3;
+  // vector<int>arr{3, 0, 4, 1, 2};
 
-  for(int i=0; i<k; i++){
-    rotate_Once(arr);
+  // cout<<arr[arr[2]]<<endl;
+  // cout<<arr[arr[1]+1]<<endl;
+
+  // int a[5] = {10,20,30,40,50};
+  // int pos[5] = {3,0,4,1,2};
+  // cout<<a[pos[2]]<<endl;
+
+  // vector<int>arr{2,0,3,1};
+  // cout<<arr[arr[arr[1]]]<<endl;
+
+  vector<int>mark{1,2,0,1,2};
+  vector<int>count(3, 0);
+
+  for(int i=0; i<5; i++){
+    count[mark[i]]++;
   }
 
-  cout<<"Rotated array is: ";
-  for(int i=0; i<arr.size(); i++){
-    cout<<arr[i]<<" ";
+  for(int i=0; i<3; i++){
+    cout<<count[i]<<" ";
   }
- 
-
 }
