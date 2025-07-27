@@ -21,19 +21,29 @@ using namespace std;
 🔸 Space Complexity: ...
 */
 
+
+//Brute Force Majority Elem (T.C: O(n^2), S.C: O(n))
 int UsingLoop(vector<int>arr, int size){
-  //Brute Force (T.C: O(n^2), S.C: O(n))
+  // Step 1: Loop through each element of the array one by one.
+  // This will treat each element as a candidate for the majority element.
   for(int i=0; i<size; i++){
+    // Step 2: Initialize a counter to 1 (counting arr[i] itself).
     int count = 1;
+    // Step 3: Compare the current element (arr[i]) with all elements that come after it.
+    // If a match is found, increment the count.
     for(int j=i+1; j<size; j++){
       if(arr[i] == arr[j]){
         count++;
       }
     }
+    // Step 4: After checking all elements for arr[i], 
+    // check if its frequency is greater than size/2 (majority condition).
     if(count > size/2){
+      // Step 5: If yes, return arr[i] because it's the majority element.
       return arr[i];
     }
   }
+  // Step 6: If no element satisfies the majority condition, return -1.
   return -1;
 }
 
@@ -72,8 +82,9 @@ int UsingMap(vector<int>arr, int size){
 🔸 Time Complexity: O(N)
 🔸 Space Complexity:
 */
+
+// USING Boyer-Moore Algorithm(A,n) , T.C: O(N), S.C: O(1)
 int UsingBoyerMooreAlgo(vector<int> arr, int size) {
-  // USING Boyer-Moore Algorithm(A,n) , T.C: O(N), S.C: O(1)
   int maj = -1;
   int count = 0;
   for(int i=0; i<size; i++){
@@ -102,9 +113,6 @@ int UsingBoyerMooreAlgo(vector<int> arr, int size) {
     return -1;
   }
 }
-
-
-
 
 
 // ------------------------------------------------------------------

@@ -1,0 +1,58 @@
+<!Doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" width="device-width" initial-scale="1.0">
+    <title>My name is Ayush</title>
+    <style>
+
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .form-data{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: antiquewhite;
+        width: 300px;
+        margin: auto;
+        margin-top: 100px;
+      }
+
+      h1{
+        font-family: Arial, Helvetica, sans-serif;
+        margin-bottom: 10px;
+        font-size: 23px;
+      }
+
+      
+    </style>
+  </head>
+
+  <body>
+    <div class="form-data">
+      <h1>Create Journal</h1>
+      <form>
+        <label for="title">Title</label>
+        <input type="text" name="" id="title"> <br><br>
+
+        <label for="journal">Journal Type</label>
+        <select name="" id="journal">
+          <option value="reflection">Reflection</option>
+          <option value="validation">Validation</option>
+          <option value="reflection">Reflection</option>
+        </select><br><br>
+
+        <label for="entry">Entry</label>
+        <textarea name="" id="entry" rows="5"></textarea>
+
+        <div class="btn">
+          <button>Cancel</button>
+          <button>Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

@@ -2,6 +2,7 @@
 #include<vector>
 using namespace std;
 
+
 // Brute Force (TC: O(N^2), SC:O(N))
 int usingBruteForce(vector<int>arr){
   int ans = -1;
@@ -14,6 +15,17 @@ int usingBruteForce(vector<int>arr){
   }
   return -1;
 }
+
+
+int findDuplicate(vector<int>arr){
+  int size = arr.size();
+  int ans = 0;
+  for(int i=0; i<size; i++){
+    ans = ans^arr[i];
+  }
+  return ans;
+}
+
 
 //Using Slow and Fast pointer (TC: O(N), SC: O(1))
 int UsingSlowAndFast(vector<int>arr){
@@ -40,7 +52,7 @@ int UsingSlowAndFast(vector<int>arr){
 int main(){
   vector<int>arr{1,3,4,2,2};
 
-  int ans = usingBruteForce(arr);
-  int ans2 = UsingSlowAndFast(arr);
+  // int ans = usingBruteForce(arr);
+  int ans2 = findDuplicate(arr);
   cout<<"The Duplicate number is: "<<ans2;
 }

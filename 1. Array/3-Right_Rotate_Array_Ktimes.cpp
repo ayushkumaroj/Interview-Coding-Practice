@@ -33,7 +33,7 @@ void rotate_Once(vector<int> &arr, int size) {
   arr[0] = temp;
 }
 // Note: call rotate_one function k time using loop
-// (i=0; i<k; i++) in main function
+// (i=0; i<k; i++){rotate_Once(arr,size)} in main function
 
 
 // ------------------------------------------------------------------
@@ -45,7 +45,7 @@ void rotate_Once(vector<int> &arr, int size) {
 🔸 Time Complexity: o(n*k)
 🔸 Space Complexity: o(1)
 */
-// Using Linear Time(O(n)) with Additional Space(temp array)
+// Using Linear Time(O(n)) + TC: O(N)
 void UsingTempArray(vector<int>&arr, int k){
   int n = arr.size();
   //step 1: Copy last k element

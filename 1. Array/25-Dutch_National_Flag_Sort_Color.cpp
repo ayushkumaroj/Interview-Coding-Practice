@@ -4,10 +4,13 @@ using namespace std;
 #include<algorithm>
 
 //Note: In header include #include<algorithm>
+
 //TC: O(NlogN), SC: O(nlogn)
 int Sort_Color(vector<int>arr){
+  //Sort the entire array
   sort(arr.begin(), arr.end());
 
+  //Print the sorted array
   for(int i=0; i<arr.size(); i++){
     cout<<arr[i]<<" ";
   }
@@ -18,6 +21,7 @@ int usingCounting(vector<int>arr){
   int countOne = 0;
   int countTwo = 0;
 
+  //Count number of 0s,1s,2s
   for(int i=0; i<arr.size(); i++){
     if(arr[i] == 0){
       countZero++;
@@ -30,6 +34,7 @@ int usingCounting(vector<int>arr){
     }
   }
 
+  //Reconstruct the array using count
   while(countZero == 0){
     countZero--;
   }

@@ -23,53 +23,37 @@ int Brute_Force(vector<int>arr){
   }
 }
 
-//TC: O(N), SC: O(N)
-int Using_LinearTime_ExtraSpace(vector<int>arr){
+
+//TC: O(N) , SC: O(N)
+int ProductOfArray(vector<int>arr){
   int n = arr.size();
-  vector<int>ans(n,1);
-  vector<int>prefix(n,1); //Prefix = left sub Array
-  vector<int>suffix(n,1); // suffix = right Sub Array
 
-  //Calculate prefix(left array) product
+  //Create two array left and right of size n
+  //Left array contain product of all elem from 0 to i-1
+  vector<int>left(n);
+  //Right array contain product of all elem from i+1 to n-1
+  vector<int>right(n);
+
+  //Fill left array
+  left[0] = 1;
   for(int i=1; i<n; i++){
-    prefix[i] = prefix[i-1] * arr[i-1];
+    left[i] = left[i-1] * arr[i-1];
   }
 
-  //Calculte suffix(right array) product
+  //Fill right array
+  right[n-1] = 1;
   for(int i=n-2; i>=0; i--){
-    suffix[i] = suffix[i+1] * arr[i+1];
+    right[i] = right[i+1] * arr[i+1];
   }
 
+  //Store the prod of left and right into ans
+  vector<int>ans(n);
   for(int i=0; i<n; i++){
-    ans[i] = prefix[i] * suffix[i];
-  }
-
-  //print the answer
-  for(int i=0; i<ans.size(); i++){
-    cout<<ans[i]<<" ";
-  }
-
-}
-
-//TC: O(N) , SC: O(1)
-int Optimized(vector<int>arr){
-  int n = arr.size();
-  vector<int>ans(n, 1);
-
-  //Prefix = ans
-  for(int i=1; i<n; i++){
-    ans[i] = ans[i-1] * arr[i-1];
-  }
-
-  //suffix
-  int suffix = 1;
-  for(int i=n-2; i>=0; i--){
-    suffix = suffix * arr[i+1];
-    ans[i] = ans[i] * suffix;
+    ans[i] = left[i] * right[i];
   }
 
   //Print the answer
-  for(int i=0; i<arr.size(); i++){
+  for(int i=0; i<ans.size(); i++){
     cout<<ans[i]<<" ";
   }
 }
@@ -79,5 +63,6 @@ int main(){
   vector<int>arr{1,2,3,4};
 
   // Brute_Force(arr);
-  Optimized(arr);
+  // Optimized(arr);
+  ProductOfArray(arr);
 }

@@ -8,10 +8,14 @@ using namespace std;
 int shortest_unsorted_Array(vector<int>arr){
   int start = arr.size();
   int end = 0;
+
+  //compare every element with all next element
   for(int i=0; i<arr.size()-1; i++){
     for(int j=i+1; j<arr.size(); j++){
       if(arr[i] > arr[j]){
+        //update starting index
         start = min(start, i);
+        //update ending index
         end = max(end, j);
       }
     }
@@ -28,21 +32,22 @@ STEPS
   3. Traverse both array, if elem are same then skip otherwise
      calculete start = min(start, i) and end = max(end, j)
 */
+
 //Using Sorting And Extra Space (TC: O(nlogn), SC: O(N))
 int using_Sorting_AndExtraSpace(vector<int>arr){
   int start = arr.size();
   int end = 0;
 
-  //copy elem into newArray
+  //Step 1: Copy array to new array
   vector<int>newArray;
   for(int i=0; i<arr.size(); i++){
     newArray.push_back(arr[i]);
   }
 
-  //sort the new Array
+  //Step 2: Sort the new array
   sort(newArray.begin(), newArray.end());
 
-  //Traverse both the array
+  //Step 3: Compare original and sorted arrays to find mismatch positions
   for(int i=0; i<arr.size(); i++){
     if(newArray[i] != arr[i]){
       start = min(start, i);
@@ -50,6 +55,7 @@ int using_Sorting_AndExtraSpace(vector<int>arr){
     }
   }
 
+  // If the array was already sorted, return 0
   if(end-start >= 0){
     return end-start+1;
   }
@@ -58,44 +64,41 @@ int using_Sorting_AndExtraSpace(vector<int>arr){
   }
 }
 
-/* USING STACK (TC: O(N), SC: O(N))
-1. Here will take one data structure called stack
-     - Main purpose of this Stack to find the position
-      of minimum and maximum elem of unsorted array
-     - If elem is in ascending order, push elem index
-       it in stack, if not then then pop top index
-2. Here will trverse array two times
-      - in 1st traversal will find min position 
-        of unsorted array
-      - In second traversal will find max position of
-        unsorted array
+/* 
+Purpose: To find the left and right boundaries of the unsorted subarray
+Steps:
+1. Traverse from left to right to find the left boundary (smallest out-of-order index)
+2. Traverse from right to left to find the right boundary (largest out-of-order index)
 */
+
+// Using Stack (TC: O(N), SC: O(N))
 int Using_Stack(vector<int>arr){
   int start = arr.size();
   int end = 0;
   stack<int>st;
-    // Traverse array from left to right and get left boundary
-    for (int i = 0; i < arr.size(); i++) {
-        while (!st.empty() && arr[st.top()] > arr[i]) {
-            start = min(start, st.top());
-            st.pop();
-        }
-        st.push(i); // Push only once after clearing larger elements
-    }
 
-  //Clear the stack for next use
+  //Step 1: Traverse array from left to right and get left boundary
+  for (int i = 0; i < arr.size(); i++) {
+      while (!st.empty() && arr[st.top()] > arr[i]) {
+          start = min(start, st.top());
+          st.pop();
+      }
+      st.push(i); // Push only once after clearing larger elements
+  }
+
+  //Clear the stack for second traversal
   while(!st.empty()){
     st.pop();
   }
 
-   // Traverse array from right to left and get right boundary
-    for (int i = arr.size() - 1; i >= 0; i--) {
-        while (!st.empty() && arr[st.top()] < arr[i]) {
-            end = max(end, st.top());
-            st.pop();
-        }
-        st.push(i); // Push only once after clearing smaller elements
-    }
+  //Step 2: Traverse array from right to left and get right boundary
+   for (int i = arr.size() - 1; i >= 0; i--) {
+       while (!st.empty() && arr[st.top()] < arr[i]) {
+           end = max(end, st.top());
+           st.pop();
+       }
+       st.push(i); // Push only once after clearing smaller elements
+   }
 
   if(end-start > 0){
     return end-start+1;

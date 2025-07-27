@@ -41,17 +41,18 @@ void Traverse_Right_to_Left(vector<int> arr) {
 
   // Traverse the array from second last element to the first
   for (int i = n - 2; i >= 0; i--) {
-    int curr = arr[i];                // Store current element
-    arr[i] = max_elem_seen_so_far;    // Replace current element with the max seen so far
-
+    // Store current element
+    int curr = arr[i]; 
+    // Replace current element with the max seen so far               
+    arr[i] = max_elem_seen_so_far;    
     // Update max_elem_seen_so_far if current element is greater
     if (curr > max_elem_seen_so_far) {
       max_elem_seen_so_far = curr;
     }
   }
-  // Print the modified array
-  for (int i = 0; i < arr.size(); i++) {
-    cout << arr[i] << " ";
+  // Print the modified array (arr)
+  for(int i=0; i<arr.size(); i++){
+    cout<<arr[i]<<" ";
   }
 }
  

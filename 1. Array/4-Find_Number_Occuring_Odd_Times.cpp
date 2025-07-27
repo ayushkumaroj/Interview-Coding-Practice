@@ -1,10 +1,3 @@
-// ------------------------------------------------------------------
-// 🔍 Problem Title: [Your Problem Name Here]
-// 📌 Problem Statement:
-//     Brief explanation of the problem.
-//     Input: ...
-//     Output: ...
-// ------------------------------------------------------------------
 
 #include<iostream>
 using namespace std;
@@ -39,6 +32,7 @@ int usingLoop(vector<int>&arr){
   }
 }
 
+
 // ------------------------------------------------------------------
 // ✅ Approach 2: Using HashMap
 // ------------------------------------------------------------------
@@ -55,7 +49,6 @@ int usingMap(vector<int>arr){
   for(int i=0; i<arr.size(); i++){
     count[arr[i]]++;
   }
-
   for(auto x:count){
     if(x.second == 1){
       ans = x.first;
@@ -69,11 +62,14 @@ int usingMap(vector<int>arr){
 // ✅ Approach 3: Using XOR
 // ------------------------------------------------------------------
 /*
+
 🔸 Idea:
     - Explain the core logic or steps.
 🔸 Time Complexity: O(n)
 🔸 Space Complexity: O(1)
 */
+
+
 // Using XOR, T.C: O(N), S.C: O(1)
 int UsingXor(vector<int>arr){
   int ans = 0;
@@ -82,7 +78,6 @@ int UsingXor(vector<int>arr){
   }
   return ans;
 }
-
 
 
 // ------------------------------------------------------------------
@@ -96,4 +91,7 @@ int main() {
   cout<<usingMap(arr)<<endl;
   cout<<UsingXor(arr)<<endl;
   return 0;
+
 }
+
+

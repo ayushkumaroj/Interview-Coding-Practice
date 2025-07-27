@@ -2,7 +2,7 @@
 #include<vector>
 using namespace std;
 
-//Uisng Shifting
+//Uisng Shifting (TC: O(N^2), SC: O(N))
 int Using_Shifting(vector<int>nums, vector<int>index){
   vector<int>target;
 
@@ -14,6 +14,7 @@ int Using_Shifting(vector<int>nums, vector<int>index){
     //make space for the new element 
     target.push_back(0);
 
+    //Shift all elem to right from insert_pos
     for(int j=target.size()-1; j>insert_pos; j--){
       target[j] = target[j-1];
     }
@@ -28,14 +29,15 @@ int Using_Shifting(vector<int>nums, vector<int>index){
   }
 }
 
-
-//Using Inbuilt Function
+ 
+//Using Inbuilt Function (TC: O(N^2), SC: O(N)
 int Create_Target_Array(vector<int>nums, vector<int>index){
   vector<int>target;
   int size = nums.size();
   //we have to insert element into target array based on index and nums
 
   for(int i=0; i<size; i++){
+    // Inserts nums[i] at position index[i] in the target vector
      target.insert(target.begin() + index[i], nums[i]);
   }
 

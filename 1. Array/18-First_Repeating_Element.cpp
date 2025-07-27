@@ -36,7 +36,7 @@ int First_Repeating_elem(vector<int>arr){
 }
 
 int main(){
-  vector<int>arr{1,2,3,4,5,6, 6};
+  vector<int>arr{2,4,3,1,2,5,4};
 
   // int ans = first_repeating(arr);
   // cout<<"The first repeating element is: "<<ans;

@@ -1,25 +1,9 @@
-// ------------------------------------------------------------------
-// 🔍 Problem Title: Find the Missing Number
-// 📌 Problem Statement:
-//     Brief explanation of the problem.
-//     Input: ...
-//     Output: ...
-// ------------------------------------------------------------------
 
 #include<iostream>
 using namespace std;
 #include<vector>
 
-// ------------------------------------------------------------------
-// ✅ Approach 1: BRUTE FORCE - USING LOOP
-// ------------------------------------------------------------------
-/*
-🔸 Idea:
-    - Explain the core logic or steps.
-🔸 Time Complexity: O(n^2)
-🔸 Space Complexity: ...
-*/
-// ✅ Approach 1: BRUTE FORCE - USING LOOP
+// Approach 1: BRUTE FORCE (TC: O(N^2 SC: O(N)))
 int  UsingLoop(vector<int>arr, int n){
   for(int i=1; i<n; i++){
     int flag = 0;
@@ -44,7 +28,8 @@ int  UsingLoop(vector<int>arr, int n){
 🔸 Time Complexity: O(n^2)
 🔸 Space Complexity: O(1)
 */
-// ✅ Approach 2: USING SUM OF N Number
+
+// Approach 2: TC: O(N^2), SC: O(1)
 int UsingSumOfN(vector<int>arr, int n){
   int sumofN = n*(n+1)/2;
   int sum = 0;
@@ -64,7 +49,8 @@ int UsingSumOfN(vector<int>arr, int n){
 🔸 Time Complexity: O(n^2)
 🔸 Space Complexity: O(1)
 */
-// ✅ Approach 2: USING XOR
+
+//Approach 2: TC: O(N), SC:O(1)
 int UsingXoR(vector<int>arr, int n){
   // XOR all numbers from 1 to n-1 (x1)
   int x1 = 0;
@@ -80,11 +66,6 @@ int UsingXoR(vector<int>arr, int n){
   int result = x1 ^ x2;
   return result;
 }
-
-
-
-
-
 
 
 // ------------------------------------------------------------------
