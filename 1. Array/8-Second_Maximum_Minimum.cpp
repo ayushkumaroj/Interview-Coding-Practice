@@ -23,6 +23,7 @@ int SecLargest(vector<int> arr) {
           secLargest = arr[i];
       }
   }
+  
   // Return the second largest element
   return secLargest;
 }

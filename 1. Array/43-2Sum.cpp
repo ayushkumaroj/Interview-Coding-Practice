@@ -116,6 +116,8 @@ void UsingTwoPointer(vector<int>& nums, int target) {
     // Step 10: If no pair was found, print a message
     cout << "No pair found that adds up to " << target << endl;
 }
+
+
 int main() {
     // Example input
     vector<int> nums = {2, 7, 11, 15}; // Our array of numbers

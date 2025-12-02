@@ -3,7 +3,7 @@ using namespace std;
 #include<math.h>
 #include<vector>
 
-// TC: O(N) , SC: O(N)
+// Counting Method: TC: O(N) , SC: O(N)
 void Method1(vector<int>arr){
   // Step 1: Calculate the size of the input array (n)
   int n = arr.size();
@@ -32,7 +32,7 @@ void Method1(vector<int>arr){
   }
 }
 
-// TC: O(N) , SC: O(1)
+// Mathematical Approach (Using Sum and Product Formula). TC: O(N) , SC: O(1)
 void Method2(vector<int>&arr){
   // Step 0: Find total size of array (n = m + 2 because two numbers repeat)
   int n = arr.size();
@@ -81,7 +81,7 @@ void Method2(vector<int>&arr){
 } 
 
 
-//TC: O(N), SC: O(1)
+//Using XOR Method (or Bit Manipulation Approach) = TC: O(N), SC: O(1)
 void Method3(vector<int>arr){
   int n = arr.size(); // Total size of array (n = m + 2)
   int m = n - 2;     // Original range is 1 to m

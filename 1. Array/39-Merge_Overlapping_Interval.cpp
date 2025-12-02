@@ -7,7 +7,6 @@ using namespace std;
 // Brute Force : TC: O(n^2) , SC: O(N)
 vector<vector<int>>mergeInterval(vector<vector<int>>&mergeInterval){
   int n = mergeInterval.size();
-
   // Step 1: Create a visited array to mark intervals that are already merged
   vector<bool>visited(n, false);
 
@@ -20,7 +19,6 @@ vector<vector<int>>mergeInterval(vector<vector<int>>&mergeInterval){
     if(visited[i] == true){
       continue;
     }
-
     // Step 4: Take current interval as starting point
     int x1 = mergeInterval[i][0];
     int x2 = mergeInterval[i][1];
@@ -52,7 +50,6 @@ vector<vector<int>>mergeInterval(vector<vector<int>>&mergeInterval){
   }
   // Step 11: Return the merged intervals
   return result;
-
 }
 
 //Using Sorting (TC: O(nlogn), SC: O(n))

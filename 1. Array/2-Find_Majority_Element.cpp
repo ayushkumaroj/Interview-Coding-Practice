@@ -59,17 +59,21 @@ int UsingLoop(vector<int>arr, int size){
 
 //USING HASHMAP(T.C: O(N), S.C: O(N))
 int UsingMap(vector<int>arr, int size){
+  // Step 1: Create an unordered_map to store frequency of each element.
   unordered_map<int,int>freq;
-  //count freq of each element
+  // Step 2: Traverse the array and update frequency for each element.
   for(int i=0; i<size; i++){
-    int element = arr[i];
-     //or -> freq[arr[i]]++;
+    int element = arr[i]; // Current element.
+    // Step 3: Increase the frequency count of the current element.
+    // (Alternatively, we can directly write freq[arr[i]]++).
     freq[element] = freq[element]+1;
+    // Step 4: If the frequency of the current element exceeds size/2,
+    // it means this element is the majority element, so return it immediately.
     if(freq[element] > size/2){
       return arr[i];
     }
   }
-  //if no majority element is found
+  // Step 5: If no element satisfies the majority condition, return -1.
   return -1;
 }
 
@@ -85,31 +89,46 @@ int UsingMap(vector<int>arr, int size){
 
 // USING Boyer-Moore Algorithm(A,n) , T.C: O(N), S.C: O(1)
 int UsingBoyerMooreAlgo(vector<int> arr, int size) {
+  // Step 1: Initialize two variables:
+  // 'maj' will store the candidate for majority element, initially -1.
+  // 'count' will track the "vote balance" for the current candidate.
   int maj = -1;
+  // Step 2: Traverse through the array to find a majority candidate.
   int count = 0;
   for(int i=0; i<size; i++){
+    // Step 3: If count becomes 0, select the current element as the new candidate.
     if(count == 0){
       maj = arr[i];
       count = 1;
     }
+    // Step 4: If current element equals the candidate, increase the vote count.
     else if(arr[i] == maj){
       count = count+1;
     }
+    // Step 5: If current element is different, decrease the vote count.
     else if(arr[i] != maj){
       count = count -1;
     }
   }
+  // At this point, 'maj' is our potential majority element,
+  // but we need to verify it because the algorithm guarantees
+  // a correct candidate only if a majority element exists
   //verification
+
+  // Step 6: Reset count to 0 for verification.
   count = 0;
+  // Step 7: Count how many times 'maj' actually appears in the array.
   for(int i=0; i<size; i++){
     if(maj == arr[i]){
       count = count+1;
     }
   }
-  //check
+  // Step 8: If the candidate appears more than size/2 times, return it.
   if(count > size/2){
     return maj;
-  }else{
+  }
+  // Step 9: Otherwise, return -1 (no majority element found).
+  else{
     return -1;
   }
 }

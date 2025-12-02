@@ -4,26 +4,28 @@ using namespace std;
 
 //Uisng Shifting (TC: O(N^2), SC: O(N))
 int Using_Shifting(vector<int>nums, vector<int>index){
+  // Step 1: Create an empty target array.
   vector<int>target;
 
+  // Step 2: Iterate over all elements in nums.
   for(int i=0; i<nums.size(); i++){
-    //Extract insert position and value
+    // Step 3: Extract the insertion position and the value to insert.
     int insert_pos = index[i];
     int value = nums[i];
 
-    //make space for the new element 
+    // Step 4: Add a placeholder element at the end to increase the size by 1.
     target.push_back(0);
 
-    //Shift all elem to right from insert_pos
+    // Step 5: Shift elements to the right from the end until insert_pos.
     for(int j=target.size()-1; j>insert_pos; j--){
       target[j] = target[j-1];
     }
 
-    //Insert the value at correct position
+    // Step 6: Insert the value at the correct position.
     target[insert_pos] = value;
   }
 
-  // print the target array
+  // Step 7: Print the final target array.
   for(int i=0; i<target.size(); i++){
     cout<<target[i] <<" ";
   }
@@ -32,16 +34,18 @@ int Using_Shifting(vector<int>nums, vector<int>index){
  
 //Using Inbuilt Function (TC: O(N^2), SC: O(N)
 int Create_Target_Array(vector<int>nums, vector<int>index){
+  // Step 1: Initialize an empty target vector.
   vector<int>target;
   int size = nums.size();
-  //we have to insert element into target array based on index and nums
-
+  
+  // Step 2: Loop through nums[] and index[] simultaneously.
   for(int i=0; i<size; i++){
-    // Inserts nums[i] at position index[i] in the target vector
+     // Step 3: Insert nums[i] into the target vector at position index[i].
+     // The STL insert() method shifts elements to the right automatically.
      target.insert(target.begin() + index[i], nums[i]);
   }
 
-  //print the targte array
+  // Step 4: Print the final target array.
   for(int i=0; i<target.size(); i++){
     cout<<target[i]<<" ";
   }
