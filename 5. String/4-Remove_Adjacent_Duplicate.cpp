@@ -41,26 +41,35 @@ string removeDuplicatesUsingStack(string s){
     return result;
 }
 
-// Time Complexity: O(N^2) in the worst case because creating substrings in each recursive call can be slow.
-// Space Complexity: O(N^2) in the worst case because of the memory used by the recursion call stack and new strings.
 string removeDuplicatesUsingRecursion(string s){
-    // Step 1: Get the length of the string because we need it for our loop boundary.
+    // STEP 1: Store the length of the string
     int n = s.length();
 
-    // Step 2: Loop through the string, starting from the second character, to find the first pair of adjacent duplicates.
-    for(int i=1; i<n; i++){
-        // Step 3: Check if the current character is the same as the one before it.
-        if(s[i] == s[i-1]){
-            // Step 4: If a duplicate pair is found, call the same function again with a new string that has the pair removed.
-            // Note: The expression s.substr(0, i-1) + s.substr(i+1) creates a new string by joining two pieces:
-            // 1. The part before the duplicate pair (from the start up to index i-2).
-            // 2. The part after the duplicate pair (from index i+1 to the end).
-            return removeDuplicatesUsingRecursion(s.substr(0, i-1) + s.substr(i+1));
+    // STEP 2: Traverse the string to find adjacent duplicates
+    for (int i = 1; i < n; i++){
+        // STEP 3: Check if current character and previous character are same
+        if (s[i] == s[i - 1]){
+            // STEP 4: Store the part BEFORE the duplicate pair
+            string leftPart = s.substr(0, i - 1);
+
+            // STEP 5: Store the part AFTER the duplicate pair
+            string rightPart = s.substr(i + 1);
+
+            // STEP 6: Combine both parts to form a new string
+            string newString = leftPart + rightPart;
+
+            // STEP 7: Call the function again with the new string
+            string result = removeDuplicatesUsingRecursion(newString);
+
+            // STEP 8: Return the final result
+            return result;
         }
     }
-    // Step 5: If the loop finishes without finding any duplicates, return the string as is because this is our final answer (the base case).
+
+    // STEP 9: Base case – no adjacent duplicates found
     return s;
 }
+
 
 // Time Complexity: O(N) because the fast pointer goes through the string only once.
 // Space Complexity: O(1) because we are modifying the original string in place and using only a few extra variables.

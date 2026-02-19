@@ -4,37 +4,55 @@ using namespace std;
 #include<limits.h>
 #include<vector>
 
-// Time Complexity: O(length of sub + length of t) because we loop through both strings once.
-// Space Complexity: O(1) because the frequency arrays have a fixed size of 256.
+
+
+
+
+// Time Complexity: O(length of sub + length of t)
+// Space Complexity: O(1) because fixed size frequency arrays are used
 bool containAll(string sub, string t){
-    // Step 1: Create an array to count characters in 'sub' because we need to know how many of each character we have.
-    vector<int>freqSub(256, 0);
-    // Step 2: Create an array to count characters in 't' because we need to know how many of each character we need.
-    vector<int>freqP(256, 0);
-
-    // Step 3: Loop through each character in the 'sub' string because we want to count every character in it.
-    for(char c: sub){
-        // Step 4: Increase the count for the current character because we have found one more of it.
-        freqSub[c]++;
+    // Step 1: Create frequency array for 'sub'
+    vector<int> freqSub(256, 0);
+    // Step 2: Create frequency array for 't'
+    vector<int> freqT(256, 0);
+    // Step 3: Count characters in 'sub'
+    for (int i = 0; i < sub.length(); i++){
+        char currentChar = sub[i];
+        freqSub[currentChar] = freqSub[currentChar] + 1;
     }
 
-    // Step 5: Loop through each character in the 't' string because we want to count every character we need.
-    for(char c: t){
-        // Step 6: Increase the count for the current character because we need one more of it.
-        freqP[c]++;
+    // Step 4: Count characters in 't'
+    for (int i = 0; i < t.length(); i++){
+        char currentChar = t[i];
+        freqT[currentChar] = freqT[currentChar] + 1;
     }
 
-    // Step 7: Loop through all possible character values (0-255) because we need to compare the counts for every character.
-    for(int i=0; i<256; i++){
-        // Step 8: Check if the count of a character in 'sub' is less than in 't' because if we have fewer characters than we need, this 'sub' is not a valid window.
-        if(freqSub[i] < freqP[i]){
-            // Step 9: Return false immediately because we have found a required character that is missing from 'sub'.
-            return false;
+    // Step 5: Assume result is true initially
+    bool isValid = true;
+
+    // Step 6: Compare frequencies for all possible characters
+    for (int i = 0; i < 256; i++){
+        // Step 7: If available characters are less than required characters
+        if (freqSub[i] < freqT[i]){
+            // Step 8: Mark as invalid
+            isValid = false;
+        }else{
+            // Step 9: Character requirement is satisfied
+            // Do nothing and continue checking other characters
         }
     }
-    // Step 10: Return true because the loop finished, which means 'sub' has at least as many of every character as 't' needs.
-    return true;
+
+    // Step 10: Return result using proper if-else
+    if (isValid == true)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
+
 
 // Time Complexity: O(n^3) where n is the length of string 's' because we have two nested loops (n^2) and inside we call 'containAll' which takes about O(n) time.
 // Space Complexity: O(n) because we store substrings which can be as large as the original string 's'.

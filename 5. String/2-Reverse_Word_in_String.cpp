@@ -74,11 +74,11 @@ string ReverseWordsInPlace(string s){
         // Step 15: Move the reading position forward because we need to skip over the space(s) to find the next word.
         i++;
     }
+    
     // Step 16: Cut off any extra parts of the string at the end because our cleaning process might leave a trailing space.
     s = s.substr(0, currPos-1);
     // Step 17: Return the modified string because it now has its words reversed and any extra spaces removed.
     return s;
-
 }
 
 // Main function to test both approaches
